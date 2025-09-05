@@ -36,4 +36,20 @@ public class MarsRoverTest {
         assertEquals(1,marsRover.GetX());
     }
 
+    @Test
+    public void should_return_x1_y2_N_when_x1_y1_move_N(){
+        String command="N";
+        MarsRover marsRover=new MarsRover(1,1,command);
+        marsRover.excuteCommand(command);
+        assertEquals(1,marsRover.GetX());
+        assertEquals(2,marsRover.GetY());
+    }
+    @Test
+    public void should_return_x1_y0_N_when_x1_y1_move_S(){
+        String command="S";
+        MarsRover marsRover=new MarsRover(1,1,command);
+        marsRover.excuteCommand(command);
+        assertEquals(1,marsRover.GetX());
+        assertEquals(0,marsRover.GetY());
+    }
 }
