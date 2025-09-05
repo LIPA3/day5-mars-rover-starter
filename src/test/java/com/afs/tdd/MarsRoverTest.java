@@ -52,4 +52,21 @@ public class MarsRoverTest {
         assertEquals(1,marsRover.GetX());
         assertEquals(0,marsRover.GetY());
     }
+    @Test
+    public void should_return_x0_y1_W_when_x1_y1_move_W(){
+        String command="W";
+        MarsRover marsRover=new MarsRover(1,1,command);
+        marsRover.excuteCommand(command);
+        assertEquals(0,marsRover.GetX());
+        assertEquals(1,marsRover.GetY());
+    }
+
+    @Test
+    public void should_return_x2_y1_S_when_x1_y1_move_E(){
+        String command="E";
+        MarsRover marsRover=new MarsRover(1,1,command);
+        marsRover.excuteCommand(command);
+        assertEquals(2,marsRover.GetX());
+        assertEquals(1,marsRover.GetY());
+    }
 }
