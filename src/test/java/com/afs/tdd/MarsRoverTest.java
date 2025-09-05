@@ -69,4 +69,18 @@ public class MarsRoverTest {
         assertEquals(2,marsRover.GetX());
         assertEquals(1,marsRover.GetY());
     }
+    @Test
+    public void should_return_x1_y1_W_when_x1_y1_left_N(){
+        String command="left";
+        String initialDirection="N";
+        MarsRover marsRover=new MarsRover(1,1,command);
+        assertEquals("W",marsRover.changeDirection(command,initialDirection));
+    }
+    @Test
+    public void should_return_x1_y1_E_when_x1_y1_left_S(){
+        String command="left";
+        String initialDirection="S";
+        MarsRover marsRover=new MarsRover(1,1,command);
+        assertEquals("E",marsRover.changeDirection(command,initialDirection));
+    }
 }

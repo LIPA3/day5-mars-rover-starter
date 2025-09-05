@@ -23,6 +23,30 @@ public class MarsRover {
             x++;
         }
     }
+    public String changeDirection(String command, String direction) {
+        if (command.equals("left")) {
+            if (direction.equals("N")) {
+                direction = "W";
+            } else if (direction.equals("W")) {
+                direction = "S";
+            } else if (direction.equals("S")) {
+                direction = "E";
+            } else if (direction.equals("E")) {
+                direction = "N";
+            }
+        } else if (command.equals("right")) {
+            if (direction.equals("N")) {
+                direction = "E";
+            } else if (direction.equals("E")) {
+                direction = "S";
+            } else if (direction.equals("S")) {
+                direction = "W";
+            } else if (direction.equals("W")) {
+                direction = "N";
+            }
+        }
+        return direction;
+    }
     public int GetY() {
         return y;
     }
