@@ -111,4 +111,11 @@ public class MarsRoverTest {
         MarsRover marsRover=new MarsRover(1,1,command);
         assertEquals("W",marsRover.changeDirection(command,initialDirection));
     }
+    @Test
+    public void should_return_x1_y1_N_when_x1_y1_right_W(){
+        String command="right";
+        String initialDirection="W";
+        MarsRover marsRover=new MarsRover(1,1,command);
+        assertEquals("N",marsRover.changeDirection(command,initialDirection));
+    }
 }
