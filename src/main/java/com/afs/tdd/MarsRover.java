@@ -4,58 +4,95 @@ public class MarsRover {
     private int y;
     private int x;
     private String command;
+    public static final String LEFT_COMMAND = "L";
+    public static final String RIGHT_COMMAND = "R";
     public static final String NORTH = "N";
     public static final String WEST = "W";
     public static final String SOUTH = "S";
     public static final String EAST = "E";
+    private String direction;
 
-    public MarsRover(int x, int y, String command) {
+    public MarsRover(int x, int y, String direction) {
         this.x = x;
         this.y = y;
-        this.command = command;
+        this.direction = direction;
     }
 
-    public void excuteCommand(String command) {
+    public void executeCommand(String command) {
+        switch (command) {
+            case LEFT_COMMAND:
+                turnLeft();
+                break;
+            case RIGHT_COMMAND:
+                turnRight();
+                break;
+            default:
+                moveForward();
+                break;
+        }
+    }
 
-        if (command.equals(NORTH)) {
-            y++;
-        } else if (command.equals(SOUTH)) {
-            y--;
-        } else if (command.equals(WEST)) {
-            x--;
-        } else if (command.equals(EAST)) {
-            x++;
+    private void turnLeft() {
+        switch (direction) {
+            case NORTH:
+                direction = WEST;
+                break;
+            case SOUTH:
+                direction = EAST;
+                break;
+            case EAST:
+                direction = NORTH;
+                break;
+            default:
+                direction = SOUTH;
+                break;
         }
     }
-    public String changeDirection(String command, String direction) {
-        if (command.equals("left")) {
-            if (direction.equals(NORTH)) {
-                direction = WEST;
-            } else if (direction.equals(WEST)) {
-                direction = SOUTH;
-            } else if (direction.equals(SOUTH)) {
+
+    private void turnRight() {
+        switch (direction) {
+            case NORTH:
                 direction = EAST;
-            } else if (direction.equals(EAST)) {
-                direction = NORTH;
-            }
-        } else if (command.equals("right")) {
-            if (direction.equals(NORTH)) {
-                direction = EAST;
-            } else if (direction.equals(EAST)) {
-                direction = SOUTH;
-            } else if (direction.equals(SOUTH)) {
+                break;
+            case SOUTH:
                 direction = WEST;
-            } else if (direction.equals(WEST)) {
+                break;
+            case EAST:
+                direction = SOUTH;
+                break;
+            default:
                 direction = NORTH;
-            }
+                break;
         }
-        return direction;
     }
-    public int GetY() {
+
+    private void moveForward() {
+        switch (direction) {
+            case NORTH:
+                ++y;
+                break;
+            case EAST:
+                ++x;
+                break;
+            case SOUTH:
+                --y;
+                break;
+            default:
+                --x;
+                break;
+        }
+    }
+
+    public int getY() {
         return y;
     }
 
-    public int GetX() {
+    public int getX() {
         return x;
     }
+
+    public String getDirection() {
+        return direction;
+    }
+
 }
