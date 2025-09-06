@@ -1,5 +1,7 @@
 package com.afs.tdd;
 
+import java.util.stream.IntStream;
+
 public class MarsRover {
     private int y;
     private int x;
@@ -34,36 +36,32 @@ public class MarsRover {
 
     private void turnLeft() {
         String[] directions = {NORTH, EAST, SOUTH, WEST};
-        for (int i = 0; i < directions.length; i++) {
-            if (directions[i].equals(direction)) {
-                direction = directions[(i + 3) % 4];
-                break;
-            }
-        }
+        IntStream.range(0, directions.length)
+                .filter(i -> directions[i].equals(direction))
+                .findFirst()
+                .ifPresent(i -> direction = directions[(i + 3) % 4]);
     }
 
     private void turnRight() {
         String[] directions = {NORTH, EAST, SOUTH, WEST};
-        for (int i = 0; i < directions.length; i++) {
-            if (directions[i].equals(direction)) {
-                direction = directions[(i + 1) % 4];
-                break;
-            }
-        }
+        IntStream.range(0, directions.length)
+                .filter(i -> directions[i].equals(direction))
+                .findFirst()
+                .ifPresent(i -> direction = directions[(i + 1) % 4]);
     }
 
     private void moveForward() {
-        int[] deltaX = {0, 1, 0, -1}; // N, E, S, W 对应的 x 偏移
-        int[] deltaY = {1, 0, -1, 0}; // N, E, S, W 对应的 y 偏移
+        int[] deltaX = {0, 1, 0, -1};
+        int[] deltaY = {1, 0, -1, 0};
         String[] directions = {NORTH, EAST, SOUTH, WEST};
 
-        for (int i = 0; i < directions.length; i++) {
-            if (directions[i].equals(direction)) {
-                x += deltaX[i];
-                y += deltaY[i];
-                break;
-            }
-        }
+        IntStream.range(0, directions.length)
+                .filter(i -> directions[i].equals(direction))
+                .findFirst()
+                .ifPresent(i -> {
+                    x += deltaX[i];
+                    y += deltaY[i];
+                });
     }
 
     public int getY() {
