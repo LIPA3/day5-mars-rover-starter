@@ -33,53 +33,36 @@ public class MarsRover {
     }
 
     private void turnLeft() {
-        switch (direction) {
-            case NORTH:
-                direction = WEST;
+        String[] directions = {NORTH, EAST, SOUTH, WEST};
+        for (int i = 0; i < directions.length; i++) {
+            if (directions[i].equals(direction)) {
+                direction = directions[(i + 3) % 4];
                 break;
-            case SOUTH:
-                direction = EAST;
-                break;
-            case EAST:
-                direction = NORTH;
-                break;
-            default:
-                direction = SOUTH;
-                break;
+            }
         }
     }
 
     private void turnRight() {
-        switch (direction) {
-            case NORTH:
-                direction = EAST;
+        String[] directions = {NORTH, EAST, SOUTH, WEST};
+        for (int i = 0; i < directions.length; i++) {
+            if (directions[i].equals(direction)) {
+                direction = directions[(i + 1) % 4];
                 break;
-            case SOUTH:
-                direction = WEST;
-                break;
-            case EAST:
-                direction = SOUTH;
-                break;
-            default:
-                direction = NORTH;
-                break;
+            }
         }
     }
 
     private void moveForward() {
-        switch (direction) {
-            case NORTH:
-                ++y;
+        int[] deltaX = {0, 1, 0, -1}; // N, E, S, W 对应的 x 偏移
+        int[] deltaY = {1, 0, -1, 0}; // N, E, S, W 对应的 y 偏移
+        String[] directions = {NORTH, EAST, SOUTH, WEST};
+
+        for (int i = 0; i < directions.length; i++) {
+            if (directions[i].equals(direction)) {
+                x += deltaX[i];
+                y += deltaY[i];
                 break;
-            case EAST:
-                ++x;
-                break;
-            case SOUTH:
-                --y;
-                break;
-            default:
-                --x;
-                break;
+            }
         }
     }
 
