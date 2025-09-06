@@ -7,115 +7,173 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class MarsRoverTest {
     @Test
     public void should_return_y_when_command_M_direction_N(){
-        String command="N";
-        MarsRover marsRover=new MarsRover(0,0,command);
-        marsRover.excuteCommand(command);
-        assertEquals(1,marsRover.GetY());
+        String direction = "N";
+        String command = "M";
+        int x = 0;
+        int y = 0;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(0, marsRover.getX());
+        assertEquals(1, marsRover.getY());
+        assertEquals("N", marsRover.getDirection());
     }
 
     @Test
     public void should_return_y_when_command_M_direction_S(){
-        String command="S";
-        MarsRover marsRover=new MarsRover(0,0,command);
-        marsRover.excuteCommand(command);
-        assertEquals(-1,marsRover.GetY());
+        String direction = "S";
+        String command = "M";
+        int x = 0;
+        int y = 0;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(0, marsRover.getX());
+        assertEquals(-1, marsRover.getY());
+        assertEquals("S", marsRover.getDirection());
     }
     @Test
     public void should_return_x_when_command_M_direction_W(){
-        String command="W";
-        MarsRover marsRover=new MarsRover(0,0,command);
-        marsRover.excuteCommand(command);
-        assertEquals(-1,marsRover.GetX());
+        String direction = "W";
+        String command = "M";
+        int x = 0;
+        int y = 0;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(-1, marsRover.getX());
+        assertEquals(0, marsRover.getY());
+        assertEquals("W", marsRover.getDirection());
     }
 
     @Test
     public void should_return_x_when_command_M_direction_E(){
-        String command="E";
-        MarsRover marsRover=new MarsRover(0,0,command);
-        marsRover.excuteCommand(command);
-        assertEquals(1,marsRover.GetX());
+        String direction = "E";
+        String command = "M";
+        int x = 0;
+        int y = 0;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(1, marsRover.getX());
+        assertEquals(0, marsRover.getY());
+        assertEquals("E", marsRover.getDirection());
     }
 
-    @Test
-    public void should_return_x1_y2_N_when_x1_y1_move_N(){
-        String command="N";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        marsRover.excuteCommand(command);
-        assertEquals(1,marsRover.GetX());
-        assertEquals(2,marsRover.GetY());
-    }
-    @Test
-    public void should_return_x1_y0_N_when_x1_y1_move_S(){
-        String command="S";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        marsRover.excuteCommand(command);
-        assertEquals(1,marsRover.GetX());
-        assertEquals(0,marsRover.GetY());
-    }
-    @Test
-    public void should_return_x0_y1_W_when_x1_y1_move_W(){
-        String command="W";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        marsRover.excuteCommand(command);
-        assertEquals(0,marsRover.GetX());
-        assertEquals(1,marsRover.GetY());
-    }
-
-    @Test
-    public void should_return_x2_y1_S_when_x1_y1_move_E(){
-        String command="E";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        marsRover.excuteCommand(command);
-        assertEquals(2,marsRover.GetX());
-        assertEquals(1,marsRover.GetY());
-    }
     @Test
     public void should_return_x1_y1_W_when_x1_y1_left_N(){
-        String command="left";
-        String initialDirection="N";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        assertEquals("W",marsRover.changeDirection(command,initialDirection));
+        String direction = "N";
+        String command = "L";
+        int x = 1;
+        int y = 1;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(1, marsRover.getX());
+        assertEquals(1, marsRover.getY());
+        assertEquals("W", marsRover.getDirection());
     }
     @Test
     public void should_return_x1_y1_E_when_x1_y1_left_S(){
-        String command="left";
-        String initialDirection="S";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        assertEquals("E",marsRover.changeDirection(command,initialDirection));
+        String direction = "S";
+        String command = "L";
+        int x = 1;
+        int y = 1;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(1, marsRover.getX());
+        assertEquals(1, marsRover.getY());
+        assertEquals("E", marsRover.getDirection());
+    }
+    @Test
+    public void should_return_x1_y1_N_when_x1_y1_left_E(){
+        String direction = "E";
+        String command = "L";
+        int x = 1;
+        int y = 1;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(1, marsRover.getX());
+        assertEquals(1, marsRover.getY());
+        assertEquals("N", marsRover.getDirection());
     }
     @Test
     public void should_return_x1_y1_S_when_x1_y1_left_W(){
-        String command="left";
-        String initialDirection="W";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        assertEquals("S",marsRover.changeDirection(command,initialDirection));
+        String direction = "W";
+        String command = "L";
+        int x = 1;
+        int y = 1;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(1, marsRover.getX());
+        assertEquals(1, marsRover.getY());
+        assertEquals("S", marsRover.getDirection());
     }
     @Test
     public void should_return_x1_y1_E_when_x1_y1_right_N(){
-        String command="right";
-        String initialDirection="N";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        assertEquals("E",marsRover.changeDirection(command,initialDirection));
+        String direction = "N";
+        String command = "R";
+        int x = 1;
+        int y = 1;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(1, marsRover.getX());
+        assertEquals(1, marsRover.getY());
+        assertEquals("E", marsRover.getDirection());
     }
     @Test
     public void should_return_x1_y1_S_when_x1_y1_right_E(){
-        String command="right";
-        String initialDirection="E";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        assertEquals("S",marsRover.changeDirection(command,initialDirection));
+        String direction = "E";
+        String command = "R";
+        int x = 1;
+        int y = 1;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(1, marsRover.getX());
+        assertEquals(1, marsRover.getY());
+        assertEquals("S", marsRover.getDirection());
     }
     @Test
     public void should_return_x1_y1_W_when_x1_y1_right_S(){
-        String command="right";
-        String initialDirection="S";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        assertEquals("W",marsRover.changeDirection(command,initialDirection));
+        String direction = "S";
+        String command = "R";
+        int x = 1;
+        int y = 1;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(1, marsRover.getX());
+        assertEquals(1, marsRover.getY());
+        assertEquals("W", marsRover.getDirection());
     }
     @Test
     public void should_return_x1_y1_N_when_x1_y1_right_W(){
-        String command="right";
-        String initialDirection="W";
-        MarsRover marsRover=new MarsRover(1,1,command);
-        assertEquals("N",marsRover.changeDirection(command,initialDirection));
+        String direction = "W";
+        String command = "R";
+        int x = 1;
+        int y = 1;
+        MarsRover marsRover = new MarsRover(x, y, direction);
+
+        marsRover.executeCommand(command);
+
+        assertEquals(1, marsRover.getX());
+        assertEquals(1, marsRover.getY());
+        assertEquals("N", marsRover.getDirection());
     }
 }
